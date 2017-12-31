@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS profile;
+
+CREATE TABLE profile (
+    id SERIAL PRIMARY KEY,
+    about TEXT,
+    image TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -3,7 +3,7 @@ import { Home } from './Home';
 import { Header } from './common/Header';
 import { Footer } from './common/Footer';
 
-export class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {};

@@ -74,16 +74,25 @@ app.get('/', function(req, res){
 
 app.post('/admin/:id', (req, res) => {
     if (email === req.body.loginData.email) {
-        console.log('correct email');
         if (password === req.body.loginData.password) {
-            console.log('password correct');
-            res.json({status: 'success'})
+            req.session.user = {
+                user: req.body.loginData.emil
+            }
+            res.json({success: true})
         } else {
             res.json({error: 'wrong password'})
         }
     } else {
         res.json({error: 'wrong email'})
     }
+})
+
+app.post('/edit-profile', (req, res) => {
+    console.log('req.body in edit profile server side', req.body);
+    database.updatedProfile(req.body.about)
+        .then(result => {
+            console.log(result, ';;;;;');
+        })
 })
 
 app.get('*', function(req, res){

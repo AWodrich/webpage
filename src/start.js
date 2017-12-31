@@ -7,9 +7,9 @@ import reduxPromise from 'redux-promise';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { Router, Route, IndexRoute, hashHistory, browserHistory, Redirect } from 'react-router';
-import { App } from './components/App';
-import { Home } from './components/Home';
-import { Admin, Login } from './components/Admin';
+import App from './components/App';
+import Home from './components/Home';
+import Admin from './components/Admin';
 import reducer from './reducers';
 
 
@@ -22,7 +22,6 @@ const router = (
             <Route path="/" component={App}>
                 <IndexRoute component={Home} />
                 <Route path="/admin" component={Admin} />
-                <Route path="/login" component={Login} />
             </Route>
         </Router>
     </Provider>

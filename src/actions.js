@@ -9,3 +9,12 @@ export function loginAdmin(loginData) {
             }
         })
 }
+
+
+export function updateProfile(data) {
+    console.log('data in actions updateProfile', data);
+    return axios.post('/edit-profile', {about: data})
+        .then(() => {
+            console.log('in here');
+        })
+}

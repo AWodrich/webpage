@@ -1,0 +1,65 @@
+html {
+    height: 100vh;
+}
+
+body {
+    height: 100vh;
+    border: 1px solid black;
+    background-image: url('https://media.giphy.com/media/dwaeIbBnF6HBu/giphy.gif');
+}
+
+main {
+    height: 100vh;
+    border: 3px solid yellow;
+    margin: 1em;
+}
+
+.app {
+    border: 3px solid blue;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+
+.header {
+    border: 3px solid green;
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.header > div {
+    margin: 5px;
+    font-size: 1.1em;
+    font-family: Goudy Bookletter 1911, sans-serif;
+}
+
+.footer {
+    width: 100%;
+    border: 3px solid red;
+    flex-grow: 1;
+}
+
+.home {
+    width: 100%;
+    border: 3px solid pink;
+    flex-grow: 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*  First Page */
+
+.imgHome {
+    width: 50em;
+}

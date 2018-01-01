@@ -10,7 +10,6 @@ export default class App extends Component {
     }
 
     render() {
-        console.log('this.props. getting dispatch?', this.props);
         return(
             <div className="app">
                 <Header />

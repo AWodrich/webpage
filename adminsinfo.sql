@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS profile;
+DROP TABLE IF EXISTS adminsinfo;
 
-CREATE TABLE profile (
+CREATE TABLE adminsinfo (
     id SERIAL PRIMARY KEY,
     about TEXT,
     image TEXT,

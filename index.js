@@ -88,10 +88,19 @@ app.post('/admin/:id', (req, res) => {
 })
 
 app.post('/edit-profile', (req, res) => {
-    console.log('req.body in edit profile server side', req.body);
     database.updatedProfile(req.body.about)
-        .then(result => {
-            console.log(result, ';;;;;');
+        .then(result => console.log(result, 'result after update'))
+})
+
+app.get('/get-profile-data', (req, res) => {
+    database.getProfileData()
+        .then(profiledata => {
+            if (profiledata.length === 0) {
+                let about = 'no data'
+                database.insertProfileData(about)
+                    .then(result => console.log('result after insert', result))
+            }
+            res.json(profiledata)
         })
 })
 

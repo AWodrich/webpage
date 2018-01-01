@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 
 
 exports.Header = (props) => {
-    console.log(props, 'in header props');
     return(
         <div className="header">
             <div style={{ border: '2px solid black'}}>Home</div>

@@ -17,12 +17,12 @@ var db = spicedPg(dbUrl);
 
 
 
-// updating data in database
+// updating about in database
 
-exports.updatedProfile = text => {
+exports.updateAbout = (about) => {
     var q = `UPDATE adminsinfo
             SET about = $1`;
-    var params = [text]
+    var params = [about]
     return db.query(q, params)
         .then(results => {
             return results.rows[0]
@@ -30,6 +30,19 @@ exports.updatedProfile = text => {
         .catch(err => console.log(err))
 }
 
+
+// updating cv in database
+
+exports.updateCV = (cv) => {
+    var q = `UPDATE adminsinfo
+            SET cv = $1`;
+    var params = [cv]
+    return db.query(q, params)
+        .then(results => {
+            return results.rows[0]
+        })
+        .catch(err => console.log(err))
+}
 
 
 // Getting all adminsinfo data
@@ -46,13 +59,27 @@ exports.getProfileData = () => {
 
 // insert data into adminsinfo
 
-exports.insertProfileData = text => {
-    var q = `INSERT INTO adminsinfo (about)
-            VALUES ($1)
-            RETURNING about, id`
-    var params = [text]
+exports.insertProfileData = (text, cv) => {
+    var q = `INSERT INTO adminsinfo (about, cv)
+            VALUES ($1, $2)
+            RETURNING about, cv, id`
+    var params = [text, cv]
     return db.query(q, params)
         .then(data => {
             return data.rows[0];
         })
+}
+
+
+// uploading uploadImages
+
+exports.uploadImages = imageUrl => {
+    var q = `UPDATE users
+            SET image=$1`
+    var params = [imageUrl]
+    return db.query(q, params)
+        .then(results => {
+            return results;
+        })
+        .catch(err => console.log(err))
 }

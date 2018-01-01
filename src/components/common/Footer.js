@@ -5,7 +5,7 @@ import React from 'react';
 exports.Footer = () => {
     return(
         <div className="footer">
-            <div>Footer here</div>
+            <div>&copy; 2018 Anja Wodrich</div>
         </div>
     )
 }

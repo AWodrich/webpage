@@ -18,15 +18,23 @@ class Home extends Component {
         if (!this.props.state) {
             return null
         }
+
+        let { about } = this.props.state
+
+
         return(
             <div className="home">
+                <div className="headline">Welcome to my Webpage! This is Anja and I am a Full Stack Developer from Germany.</div>
                 <img className="imgHome" src='../../background.jpg' />
                 <h2>About</h2>
-                {this.props.state.about && <p>{this.props.state.about}</p>}
+                {about && <p style={{ marginLeft:'4em', marginRight:'4em', lineHeight: '1.5'}}>{about}</p>}
             </div>
         )
     }
 }
+
+
+
 
 const mapStateToProps = state => {
     return {

@@ -28,21 +28,23 @@ class Login extends Component {
             this.props.state = ''
         }
         if (this.props.state.success) {
-            return <Profile />
+            return <Profile email={this.state.email} />
         }
 
         return(
-            <div>
-                <div style={{border: '4px solid white'}}>
+            <div style={{height: '130vh'}}>
+                <div className="wrapLoginField">
                     {this.props.state.error}
                     <input className="input" onChange={this.onChange} type="email" nameClass="inputLogin" name="email" placeholder="email@email.com" />
                     <input className="input" onChange={this.onChange} type="password" nameClass="inputLogin" name="password" placeholder="Enter Password" />
-                    <button className="btnLogin" onClick={this.onSubmit} type="button" nameClass="btnLogin">Login Admin</button>
+                    <button className="input" onClick={this.onSubmit} type="button" nameClass="btnLogin">Login Admin</button>
                 </div>
             </div>
         )
     }
 }
+
+
 
 
 const mapStateToProps = state => {

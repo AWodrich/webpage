@@ -18,7 +18,7 @@ export function updateAbout(data) {
 }
 
 export function updateCV(data) {
-    return axios.post('/edit-profile', {data})
+    return axios.post('/edit-cv', {data})
         .then(() => {
             console.log('in here');
         })

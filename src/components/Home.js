@@ -15,6 +15,8 @@ class Home extends Component {
     }
 
     render() {
+
+        console.log('this.props.state??', this.props.state);
         if (!this.props.state) {
             return null
         }

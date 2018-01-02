@@ -33,7 +33,7 @@ exports.updateAbout = (about) => {
 
 // updating cv in database
 
-exports.updateCV = (cv) => {
+exports.editCV = cv => {
     var q = `UPDATE adminsinfo
             SET cv = $1`;
     var params = [cv]
@@ -48,7 +48,7 @@ exports.updateCV = (cv) => {
 // Getting all adminsinfo data
 
 exports.getProfileData = () => {
-    var q = 'SELECT * FROM adminsinfo'
+    var q = `SELECT * FROM adminsinfo`
     return db.query(q)
         .then(data => {
             return data.rows;
@@ -59,11 +59,11 @@ exports.getProfileData = () => {
 
 // insert data into adminsinfo
 
-exports.insertProfileData = (text, cv) => {
-    var q = `INSERT INTO adminsinfo (about, cv)
+exports.insertProfileData = text => {
+    var q = `INSERT INTO adminsinfo (about)
             VALUES ($1, $2)
             RETURNING about, cv, id`
-    var params = [text, cv]
+    var params = [text]
     return db.query(q, params)
         .then(data => {
             return data.rows[0];

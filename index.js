@@ -82,17 +82,20 @@ app.use(bodyParser.json())
 
 app.use(compression());
 
+
+
 // 1. Main Page
 app.get('/', function(req, res){
-    // if(!req.session && req.sessio != '/'){
-    //     res.redirect('/home/')
-    //     return;
-    // }
-    // if(req.session && req.session.url == '/') {
-    //     res.redirect('/home')
-    // }
+    if(!req.session && req.sessio != '/'){
+        res.redirect('/home/')
+        return;
+    }
+    if(req.session && req.session.url == '/') {
+        res.redirect('/home')
+    }
     res.sendFile(__dirname + '/index.html');
 });
+
 
 app.post('/admin/:id', (req, res) => {
     if (email === req.body.loginData.email) {
@@ -110,25 +113,20 @@ app.post('/admin/:id', (req, res) => {
 })
 
 app.post('/edit-profile', (req, res) => {
-    if (req.body.data.about) {
         database.updateAbout(req.body.data.about)
             .then(result => console.log('updated about'))
-    }
-    if (req.body.data.cv) {
-        database.updateCV(req.body.data.cv)
-            .then(result => console.log('updated cv'))
-    }
+})
+
+
+app.post('/edit-cv', (req, res) => {
+    const dataJson = JSON.stringify(req.body.data);
+    database.editCV(dataJson)
+        .then(() => console.log('cv updated'))
 })
 
 app.get('/get-profile-data', (req, res) => {
     database.getProfileData()
         .then(profiledata => {
-            if (profiledata.length === 0) {
-                let about = 'no data';
-                let cv = 'no cv';
-                database.insertProfileData(about, cv)
-                    .then(result => console.log('result after insert', result))
-            }
             res.json(profiledata[0])
         })
 })

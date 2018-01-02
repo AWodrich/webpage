@@ -12,5 +12,11 @@ export default function(state = {}, action) {
             data: action.data
         });
     }
+
+    if (action.type == 'UPDATE_CV_FIELD') {
+        state = Object.assign({}, state, {
+            cv: action.data
+        })
+    }
     return state;
 }

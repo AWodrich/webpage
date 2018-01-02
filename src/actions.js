@@ -17,8 +17,8 @@ export function updateAbout(data) {
         })
 }
 
-export function updateCV(data) {
-    return axios.post('/edit-cv', {data})
+export function updateCV(newdata, olddata) {
+    return axios.post('/edit-cv', {newdata, olddata})
         .then(() => {
             console.log('in here');
         })
@@ -37,9 +37,15 @@ export function getProfileData() {
 
 
 export function uploadImage(formData) {
-    console.log('in actions uplaod image', formData);
     return axios.post('/upload-image', {formData})
         .then(image => {
             console.log('image data?', image);
         })
+}
+
+export function updateCVField(name, data) {
+    return {
+        type: 'UPDATE_CV_FIELD',
+        data: {name, data}
+    }
 }

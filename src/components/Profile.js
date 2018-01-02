@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { updateAbout, getProfileData, updateCV } from '../actions';
+import { updateAbout, getProfileData, updateCV, updateCVField } from '../actions';
 import { connect } from 'react-redux';
 import UploadImage from './common/UploadImage';
 
@@ -18,28 +18,20 @@ class Profile extends Component {
     }
 
     onChange(e) {
-        console.log(e.target.name == "education");
-
-
+        // this.props.dispatch(updateCVField(e.target.name, e.target.value))
         // set redux state not local state
-
-        this.setState({
-            [e.target.name]:e.target.value
-        }, () => console.log('new state'))
-        console.log('this.setstate', this.state);
+        this.setState({[e.target.name]:e.target.value})
     }
 
-    updateInfo(e){
+    updateInfo(e) {
+        console.log('inside update info', this.state);
         e.preventDefault();
-        this.props.dispatch(updateAbout(this.state))
+        this.props.dispatch(updateAbout(this.state.about))
     }
 
     updateCv(e) {
         e.preventDefault();
-        let { work, education, language, extras } = this.props.state.data.cv;
-
-        console.log('updating cv', this.state);
-        this.props.dispatch(updateCV(this.state))
+        this.props.dispatch(updateCV(this.state, this.props.state.data.cv))
     }
 
     showUploader() {
@@ -63,23 +55,30 @@ class Profile extends Component {
                     <textarea onChange={this.onChange} name="about" rows="8" cols="80">{about}</textarea>
                     <button className="input" onClick={this.updateInfo}>Change About</button>
                 </div>
+
                 <div className="edit">
                     <h4>Upload new Image</h4>
                     <button className="input" onClick={this.showUploader}>Uploading Image</button>
                     {this.state.showUploader && <UploadImage />}
                 </div>
+
                 <div className="edit">
                     <h4>Edit Your CV</h4>
+
                     <p>Work Experience</p>
                     <textarea onChange={this.onChange} name="work" rows="8" cols="80">{work}</textarea>
+
                     <p>Education</p>
                     <textarea onChange={this.onChange} name="education" rows="8" cols="80">{education}</textarea>
+
                     <p>Language</p>
                     <textarea onChange={this.onChange} name="language" rows="8" cols="80">{language}</textarea>
+
                     <p>Extras</p>
                     <textarea onChange={this.onChange} name="extras" rows="8" cols="80">{extras}</textarea>
                     <button className="input" onClick={this.updateCv}>Change CV</button>
                 </div>
+
                 <div className="edit">
                     <h4>Change Login Credentials</h4>
                     <input className="input" onChange={this.onChange} name="email" type="email" placeholder={email}></input>

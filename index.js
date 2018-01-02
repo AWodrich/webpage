@@ -56,7 +56,7 @@ const uploader = multer({
 // make webpage secure
 app.disable('x-powered-by');
 
-// make sure that webpage cannot be put into a frame for misusage
+// make sure that webpage cannot be put into an i-frame for misusage
 app.use((req, res, next) => {
     res.setHeader('x-frame-options', 'deny');
     next();
@@ -84,7 +84,9 @@ app.use(compression());
 
 
 
-// 1. Main Page
+
+
+// Main Page
 app.get('/', function(req, res){
     if(!req.session && req.sessio != '/'){
         res.redirect('/home/')
@@ -96,6 +98,10 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
 
+
+
+
+// Login to Admin Page
 
 app.post('/admin/:id', (req, res) => {
     if (email === req.body.loginData.email) {
@@ -112,17 +118,36 @@ app.post('/admin/:id', (req, res) => {
     }
 })
 
+
+
+
+// Edit data and change in database
+
 app.post('/edit-profile', (req, res) => {
-        database.updateAbout(req.body.data.about)
+    console.log('inside server edit profile', req.body);
+        database.updateAbout(req.body.data)
             .then(result => console.log('updated about'))
 })
 
 
 app.post('/edit-cv', (req, res) => {
-    const dataJson = JSON.stringify(req.body.data);
+    const newObject = extend(olddata,newdata)
+    const dataJson = JSON.stringify(newObject);
+    let { newdata, olddata} = req.body;
+    // merging two objects ( new and old cv data)
+    function extend(obj, src) {
+        Object.keys(src).forEach(function(key) { obj[key] = src[key]; });
+            return obj;
+    }
     database.editCV(dataJson)
-        .then(() => console.log('cv updated'))
+    .then(() => console.log('cv updated'))
 })
+
+
+
+
+
+// Get data from database
 
 app.get('/get-profile-data', (req, res) => {
     database.getProfileData()
@@ -131,6 +156,10 @@ app.get('/get-profile-data', (req, res) => {
         })
 })
 
+
+
+
+// Uploading Image, storing to AWS and string to database
 
 app.post('/upload-image', uploader.single('file'), (req, res) => {
     console.log('is there a req.file?====server side', req.body);
@@ -157,9 +186,18 @@ app.post('/upload-image', uploader.single('file'), (req, res) => {
 
 
 
+
+// Fallback route
+
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
+
+
+
+
+
+// Setting up Server
 
 app.listen(8080, function() {
     console.log("I'm listening.")

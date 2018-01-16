@@ -43,9 +43,20 @@ export function uploadImage(formData) {
         })
 }
 
+
 export function updateCVField(name, data) {
     return {
         type: 'UPDATE_CV_FIELD',
         data: {name, data}
     }
+}
+
+export function getProjects() {
+    return axios.get('/portfolio')
+        .then(projects => {
+            return {
+                type: 'GET_PROJECTS',
+                data: projects.data
+            }
+        })
 }

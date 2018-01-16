@@ -12,10 +12,14 @@ export default function(state = {}, action) {
             data: action.data
         });
     }
-
     if (action.type == 'UPDATE_CV_FIELD') {
         state = Object.assign({}, state, {
             cv: action.data
+        })
+    }
+    if (action.type == 'GET_PROJECTS') {
+        state = Object.assign({}, state, {
+            projects: action.data
         })
     }
     return state;

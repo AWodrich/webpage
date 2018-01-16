@@ -26,6 +26,7 @@ const description = require('./description.json');
 
 const { email, password } = require('./logincreds.json');
 
+const projects = require('./projects.json');
 
 if (process.env.NODE_ENV != 'production') {
     app.use('/bundle.js', require('http-proxy-middleware')({
@@ -131,9 +132,10 @@ app.post('/edit-profile', (req, res) => {
 
 
 app.post('/edit-cv', (req, res) => {
+    console.log('in here?');
+    let { newdata, olddata } = req.body;
     const newObject = extend(olddata,newdata)
     const dataJson = JSON.stringify(newObject);
-    let { newdata, olddata} = req.body;
     // merging two objects ( new and old cv data)
     function extend(obj, src) {
         Object.keys(src).forEach(function(key) { obj[key] = src[key]; });
@@ -184,6 +186,13 @@ app.post('/upload-image', uploader.single('file'), (req, res) => {
 })
 
 
+
+
+// Get Projects from json file
+
+app.get('/portfolio', (req, res) => {
+    res.json(projects)
+})
 
 
 

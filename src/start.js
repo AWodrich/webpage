@@ -12,6 +12,8 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import reducer from './reducers';
 import CV from './components/CV';
+import Technologies from './components/Technologies';
+import Projects from './components/Projects';
 
 
 
@@ -24,6 +26,8 @@ const router = (
                 <IndexRoute component={Home} />
                 <Route path="/admin" component={Admin} />
                 <Route path="/curriculum-vitae" component={CV} />
+                <Route path="/technologies" component={Technologies} />
+                <Route path="/projects" component={Projects} />
             </Route>
         </Router>
     </Provider>

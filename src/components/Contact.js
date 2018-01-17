@@ -11,7 +11,7 @@ export default function Contact() {
                 <a href="mailto:anjawodrich@gmail.com" target="_blank"><img className="contactImg" src="./mail.jpg" /></a>
             </div>
             <h2>Contact</h2>
-            <div style={{ position:"relative", left:"48.8%", top:"-180px",  width:"30px", height:"10px", borderBottom:"2px solid violet"}}/>
+            <div style={{ position:"relative", left:"48.8%", top:"-200px",  width:"30px", height:"10px", borderBottom:"2px solid violet"}}/>
         </div>
     )
 }

@@ -6,8 +6,9 @@ import { Header } from './common/Header';
 class Projects extends Component {
     constructor(props) {
         super(props);
-        this.state = { showProject: false };
+        this.state = { showProject: false};
         this.showProject = this.showProject.bind(this);
+        this.closeCard = this.closeCard.bind(this);
     }
 
     componentWillMount() {
@@ -37,6 +38,10 @@ class Projects extends Component {
           }
     }
 
+    closeCard() {
+        this.setState({ closeCard: true })
+    }
+
     render() {
         const { projects } = this.props.state;
         if (!projects) {
@@ -47,19 +52,22 @@ class Projects extends Component {
 
         const projectList = [];
         projects.map(project => {
+            console.log('/////', project);
             projectList.push(
                 <div onClick={() => {this.showProject(project.title)}} className="singleProject">
-                    <h1>{project.title}</h1>
-                    <img style={{ width: "100px", height: "100px" }}src='./projectImages/defaultImg.jpg' />
-                    {this.state.title === project.title && <h4>{project.description}</h4>}
+                <h1>{project.title}</h1>
+                {this.state.title === project.title ? <img style={{ width: "100px", height: "auto" }} src={project.image} /> : <img style={{ width: "100px", height: "100px" }}src='./projectImages/defaultImg.jpg' />}
+                {this.state.title === project.title && <div className="projectCard"><h2>{project.title}</h2><h4>{project.description}</h4><img src={project.image} /><a href={project.website} target="_blank">Go to Website</a><button onClick={this.closeCard}>close</button></div>}
                 </div>
             )
         })
 
+
+
         return(
                 <div>
                     <h2 className="projectsHeadline">Projects</h2>
-                    <div style={{ position:"relative", left:"48.8%", top:"-20px",  width:"30px", height:"10px", borderBottom:"2px solid violet"}}/>
+                    <div style={{ position:"relative", left:"48.8%", top:"-30px",  width:"30px", height:"10px", borderBottom:"2px solid violet"}}/>
                     <ul className="wrapProjectList">{projectList}</ul>
                 </div>
         )

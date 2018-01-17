@@ -1,22 +1,15 @@
 html {
-    height: 750vh;
+    height: 550vh;
 }
 
 body {
-    height: 750vh;
-    border: 1px solid black;
+    height: 550vh;
     /* background-image: url('https://media.giphy.com/media/dwaeIbBnF6HBu/giphy.gif'); */
 }
 
-main {
-    height: 150vh;
-    border: 3px solid yellow;
-    margin: 1em;
-}
 
 .app {
-    border: 3px solid blue;
-    height: 650vh;
+    height: 550vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,10 +47,13 @@ a:hover {
 
 
 .footer {
-    width: 100%;
+    width: 80%;
     height: 30px;
-    border: 3px solid red;
-    font-family: "Courier";
+    font-family: Courier;
+    position: absolute;
+    bottom: -3500px;
+    color: #5d807c;
+    left: 50px;
 }
 
 
@@ -104,12 +100,12 @@ a:hover {
 .home {
     color: #5d807c;
     font-size: 20px;
-    font-family: "Courier";
+    font-family: Courier;
 }
 
 .headline {
   color: Violet;
-  font-family: "Courier";
+  font-family: Courier;
   font-size: 25px;
   margin: 10px 0px 0 10px;
   white-space: nowrap;
@@ -254,7 +250,7 @@ textarea {
 
 #projects {
     position: relative;
-    top: -250px;
+    top: 750px;
     width: 100%;
     flex-grow: 8;
     display: flex;
@@ -283,6 +279,55 @@ textarea {
      flex-wrap: wrap;
      justify-content: center;
 }
+
+.projectCard {
+    width: 400px;
+    height: 500px;
+    z-index: 3;
+    display: flex;
+    position: absolute;
+    top: 220px;
+    left: 500px;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    background-color: violet;
+    justify-content: center;
+    border-radius: 5%;
+    animation:fadein .8s;
+    box-shadow: inset 0.3em 0.3em 0.9em black;
+    font-family: Courier;
+}
+
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+.projectCard>img {
+    width: 140px;
+    height: auto;
+    position: relative;
+    align-items: center;
+    left: 33%;
+    margin-bottom: 10px;
+    box-shadow: inset 0 0 2em 2em khaki;
+    border-radius: 10%;
+    padding: 0.1em;
+}
+
+.projectCard>img:hover {
+    position: absolute;
+    width: 400px;
+    left: 10px;
+    height: auto;
+}
+
 
 .singleProject {
     height: 300px;
@@ -342,7 +387,7 @@ textarea {
     height: 500px;
     background-color: #5d807c;
     position: relative;
-    top: -600px;
+    top: 300px;
     width: 100%;
 }
 
@@ -358,4 +403,77 @@ textarea {
     text-align: center;
     -webkit-margin-before: 0.83em;
     -webkit-margin-after: 0.83em
+}
+
+
+
+/*  Technologies */
+
+
+.container {
+  width:150px;
+	height:450px;
+	position:relative;
+	overflow:hidden;
+    left: 44%;
+    margin: 10px;
+    top: 1130px;
+}
+
+.techHead {
+    font-family: Courier;
+    color: #5d807c;
+    font-size: 2em;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: 1040px;
+}
+
+
+.css-carousel {
+  width:500%;
+  -webkit-animation: css-carousel 15s linear infinite;
+	-moz-animation: css-carousel 15s linear infinite;
+	-ms-animation: css-carousel 15s linear infinite;
+	animation: css-carousel 15s linear infinite;
+}
+
+.css-carousel .css-img{
+  display:inline-block;
+  width: 150px;
+  height: auto;
+}
+.css-carousel img:not(:first-child){
+  float:left;
+}
+
+@-webkit-keyframes css-carousel {
+  0%, 23% {margin-left:0}
+  25%, 48% { margin-left:-100%; }
+  50%, 73% { margin-left:-200%; }
+  75%, 98% { margin-left:-300%;}
+  100% { margin-left:0;}
+
+}
+@-moz-keyframes css-carousel {
+  0%, 23% {margin-left:0}
+  25%, 48% { margin-left:-100%; }
+  50%, 73% { margin-left:-200%; }
+  75%, 98% { margin-left:-300%;}
+  100% { margin-left:0;}
+}
+@-ms-keyframes css-carousel {
+  0%, 23% {margin-left:0}
+  25%, 48% { margin-left:-100%; }
+  50%, 73% { margin-left:-200%; }
+  75%, 98% { margin-left:-300%;}
+  100% { margin-left:0;}
+}
+@keyframes css-carousel {
+  0%, 23% {margin-left:0}
+  25%, 48% { margin-left:-100%; }
+  50%, 73% { margin-left:-200%; }
+  75%, 98% { margin-left:-300%;}
+  100% { margin-left:0;}
 }

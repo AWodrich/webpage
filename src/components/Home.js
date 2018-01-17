@@ -5,6 +5,7 @@ import CV from './CV';
 import Projects from './Projects';
 import { Modal,ModalManager,Effect} from 'react-dynamic-modal';
 import Contact from './Contact';
+import Technologies from './Technologies';
 
 class MyModal extends Component{
    render(){
@@ -70,7 +71,7 @@ class Home extends Component {
                         <Projects />
                     </div>
                     <div id="tech">
-                        <div>tech comes here</div>
+                        <Technologies />
                     </div>
                 </div>
             </div>

@@ -6,10 +6,11 @@ import { Link } from 'react-router';
 exports.Header = (props) => {
     return(
         <div className="header">
-            <Link to="/">Home</Link>
-            <Link to="/technologies">Technologies</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/curriculum-vitae">CV</Link>
+            <a to="/">Home</a>
+            <a to="/technologies">Technologies</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">CV</a>
+            <a href="#wrapContactInfo">Contact</a>
         </div>
     )
 }

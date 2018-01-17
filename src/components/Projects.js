@@ -6,11 +6,35 @@ import { Header } from './common/Header';
 class Projects extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { showProject: false };
+        this.showProject = this.showProject.bind(this);
     }
 
     componentWillMount() {
         this.props.dispatch(getProjects())
+    }
+
+    showProject(str) {
+        switch(str) {
+           case 'Imageboard':
+               return this.setState({title: str});
+               break;
+           case 'Social Network':
+               return this.setState({title: str});
+               break;
+           case 'Mobile App':
+               return this.setState({title: str});
+               break;
+           case 'Weather App':
+               return this.setState({title: str});
+               break;
+           case 'Online Petition':
+               return this.setState({title: str});
+               break;
+           case 'Music App':
+               return this.setState({title: str});
+               break;
+          }
     }
 
     render() {
@@ -21,25 +45,22 @@ class Projects extends Component {
             )
         }
 
-
-        console.log('projects array?', projects);
         const projectList = [];
         projects.map(project => {
             projectList.push(
-                <div style={{ height: "300px", width: "100%", border: "2px solid black" }}>
+                <div onClick={() => {this.showProject(project.title)}} className="singleProject">
                     <h1>{project.title}</h1>
-                    <h4>{project.description}</h4>
-                    <img src={project.image} style={{ height: "200px" }} />
+                    <img style={{ width: "100px", height: "100px" }}src='./projectImages/defaultImg.jpg' />
+                    {this.state.title === project.title && <h4>{project.description}</h4>}
                 </div>
             )
         })
 
         return(
-                <div style={{ position:"relative", top: "400px", height: "400vh" }}>
-                    <div style={{ position:"fixed", top:"30px"}}>
-                    <Header />
-                    </div>
-                    <ul style={{ display: "flex", flexDirection: "column" }}>{projectList}</ul>
+                <div>
+                    <h2 className="projectsHeadline">Projects</h2>
+                    <div style={{ position:"relative", left:"48.8%", top:"-20px",  width:"30px", height:"10px", borderBottom:"2px solid violet"}}/>
+                    <ul className="wrapProjectList">{projectList}</ul>
                 </div>
         )
     }
